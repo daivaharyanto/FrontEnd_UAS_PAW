@@ -1,22 +1,41 @@
 import Vue from 'vue' 
 import Router from 'vue-router' 
 
-const DashboardLayout = () => import(/* webpackChunkName: "dashboard" */ '../components/dashboardLayout.vue') 
+const DashboardLayout = () => import(/* webpackChunkName: "dashboard" */ '../components/dashboardAdminLayout.vue') 
 
 function loadView(view) {
-    return () => import(/* webpackChunkName: "view-[request]" */ `../components/dashboardContents/${view}.vue`) 
+    return () => import(/* webpackChunkName: "view-[request]" */ `../components/dashboardAdminContents/${view}.vue`) 
 }
 
-const routes = [ 
+const routes = [    
     { 
         path: '/', 
         component: DashboardLayout, 
         children: [ 
             { 
-                name: 'UserController', 
+                name: 'User', 
                 path: '', 
                 component: loadView('userController') 
+            }, 
+
+            { 
+                name: 'Barber', 
+                path: '/dashboardAdminContents/barberController', 
+                component: loadView('barberController') 
+            },
+            
+            { 
+                name: 'Hairstyle', 
+                path: '/dashboardAdminContents/hairstyleController', 
+                component: loadView('hairstyleController') 
+            },
+            
+            { 
+                name: 'Report', 
+                path: '/dashboardAdminContents/reportController', 
+                component: loadView('reportController') 
             } 
+
         ] 
     }, 
 ] 
