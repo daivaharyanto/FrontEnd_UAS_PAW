@@ -55,7 +55,7 @@
                                         light 
                                         @click="deleteData(item.id)"
                                     > 
-                                        <v-icon>mdi-deleteaaa</v-icon>
+                                        <v-icon>mdi-delete</v-icon>
                                     </v-btn> 
                                 </td> 
                             </tr> 
