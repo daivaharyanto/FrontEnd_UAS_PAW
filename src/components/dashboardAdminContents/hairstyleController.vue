@@ -37,12 +37,16 @@
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
-                                <td>{{ item.name }}</td> 
-                                <td><v-img :src= "item.profile_pict"
-                                    aspect-ratio="1"
+                                <td>{{ item.name }}</td>
+                                <td>{{item.hair_pict}}</td>
+
+                                <td>
+                                    <img
+                                    v-bind:src = "'../../../../BackendTubes-master/upload/hair_pict/'+item.hair_pict"                       
                                     class="grey lighten-2"
-                                    max-width="50"
-                                    max-height="50"></v-img>
+                                    width="50px"
+                                    height="50px" 
+                                    />
                                 </td>
                                 <td class="text-xs-center"> 
                                     <v-btn 
@@ -79,12 +83,9 @@
                             <v-col cols="12"> 
                                 <v-text-field label="Name*" v-model="form.name" required></v-text-field> 
                             </v-col> 
-                            <v-col cols="12"> 
-                                <v-text-field label="Email*" v-model="form.email" required></v-text-field>
+                            <v-col cols="12">
+                                <v-file-input accept="image/*" label="Select an Image"></v-file-input>
                             </v-col>
-                            <v-col cols="12"> 
-                                <v-text-field label="Password*" v-model="form.password" type="password" required></v-text-field> 
-                            </v-col> 
                         </v-row> 
                     </v-container>
                     <small>*indicates required field</small> 
@@ -131,7 +132,7 @@ export default {
                 }, 
                 {
                     text: 'Photos',
-                    value: 'profile_pict'
+                    value: 'hair_pict'
                 },
                 { 
                     text: 'Actions', 
@@ -145,9 +146,7 @@ export default {
             load: false,
             form: { 
                 name : '', 
-                email : '', 
-                password : '',
-                profile_pict: '', 
+                hair_pict: '', 
             }, 
             user : new FormData, 
             typeInput: 'new', 
@@ -156,6 +155,7 @@ export default {
         } 
     }, 
     methods:{ 
+
         getData(){ 
             var uri = this.$apiUrl + '/hairstyle' 
             this.$http.get(uri).then(response =>{ 
@@ -164,9 +164,7 @@ export default {
         }, 
         sendData(){ 
             this.user.append('name', this.form.name); 
-            this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            this.user.append('profile_pict', this.form.profile_pict);
+            this.user.append('hair_pict', this.form.hair_pict);
             var uri =this.$apiUrl + '/hairstyle' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
@@ -188,9 +186,7 @@ export default {
         }, 
         updateData(){ 
             this.user.append('name', this.form.name); 
-            this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            this.user.append('profile_pict', this.form.profile_pict);
+            this.user.append('hair_pict', this.form.hair_pict);
             var uri = this.$apiUrl + '/hairstyle/' + this.updatedId; 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{
@@ -214,8 +210,7 @@ export default {
             this.typeInput = 'edit'; 
             this.dialog = true; 
             this.form.name = item.name; 
-            this.form.email = item.email; 
-            this.form.password = '', 
+            this.form.hair_pict = item.hair_pict;
             this.updatedId = item.id 
         }, 
         deleteData(deleteId){ //menghapus data 
@@ -243,9 +238,8 @@ export default {
         }, 
         resetForm(){ 
             this.form = { 
-                name : '', 
-                email : '', 
-                password : '' 
+                name : '',  
+                hair_pict : '' 
             } 
         } 
         }, 
