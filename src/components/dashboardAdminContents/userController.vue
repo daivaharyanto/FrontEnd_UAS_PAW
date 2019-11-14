@@ -2,7 +2,7 @@
     <v-container> 
         <v-card>
             <v-container grid-list-md mb-0>
-                <h2 class="text-md-center">Data User</h2> 
+                <h2 class="text-md-center">User Data</h2> 
                 <v-layout row wrap style="margin:10px"> 
                     <v-flex xs6> 
                         <v-btn
@@ -14,7 +14,7 @@
                         @click="dialog = true"
                         >
                         <v-icon size="18" class="mr-2">mdi-pencil-plus</v-icon>
-                            Tambah User
+                            Add User
                         </v-btn>
                     </v-flex>
                     <v-flex xs6 class="text-right"> 
@@ -37,10 +37,10 @@
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
-                                <td>{{ item.name }}</td> 
+                                <td>{{ item.full_name }}</td> 
                                 <td>{{ item.email}}</td> 
                                 <td>{{ item.password }}</td> 
-                                <td class="text-center"> 
+                                <td class="text-xs-center"> 
                                     <v-btn 
                                         icon 
                                         color="indigo" 
@@ -73,7 +73,7 @@
                     <v-container> 
                         <v-row> 
                             <v-col cols="12"> 
-                                <v-text-field label="Name*" v-model="form.name" required></v-text-field> 
+                                <v-text-field label="Name*" v-model="form.full_name" required></v-text-field> 
                             </v-col> 
                             <v-col cols="12"> 
                                 <v-text-field label="Email*" v-model="form.email" required></v-text-field>
@@ -123,7 +123,7 @@ export default {
                 }, 
                 { 
                     text: 'Name', 
-                    value: 'name' 
+                    value: 'full_name' 
                 }, 
                 { 
                     text: 'Email', 
@@ -134,7 +134,7 @@ export default {
                     value: 'password' 
                     }, 
                 { 
-                    text: 'Aksi', 
+                    text: 'Actions', 
                     value: null 
                 }, 
             ], 
@@ -144,7 +144,7 @@ export default {
             text: '', 
             load: false,
             form: { 
-                name : '', 
+                full_name : '', 
                 email : '', 
                 password : '' 
             }, 
@@ -162,7 +162,7 @@ export default {
             }) 
         }, 
         sendData(){ 
-            this.user.append('name', this.form.name); 
+            this.user.append('full_name', this.form.full_name); 
             this.user.append('email', this.form.email); 
             this.user.append('password', this.form.password); 
             var uri =this.$apiUrl + '/user' 
@@ -185,7 +185,7 @@ export default {
             }) 
         }, 
         updateData(){ 
-            this.user.append('name', this.form.name); 
+            this.user.append('full_name', this.form.full_name); 
             this.user.append('email', this.form.email); 
             this.user.append('password', this.form.password); 
             var uri = this.$apiUrl + '/user/' + this.updatedId; 
@@ -210,7 +210,7 @@ export default {
         editHandler(item){ 
             this.typeInput = 'edit'; 
             this.dialog = true; 
-            this.form.name = item.name; 
+            this.form.full_name = item.full_name; 
             this.form.email = item.email; 
             this.form.password = '', 
             this.updatedId = item.id 
@@ -240,7 +240,7 @@ export default {
         }, 
         resetForm(){ 
             this.form = { 
-                name : '', 
+                full_name : '', 
                 email : '', 
                 password : '' 
             } 

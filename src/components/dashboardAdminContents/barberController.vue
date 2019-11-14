@@ -1,8 +1,8 @@
-<template> 
+ <template> 
     <v-container> 
         <v-card>
             <v-container grid-list-md mb-0>
-                <h2 class="text-md-center">Data Barber</h2> 
+                <h2 class="text-md-center">Barber Data</h2> 
                 <v-layout row wrap style="margin:10px"> 
                     <v-flex xs6> 
                         <v-btn
@@ -14,7 +14,7 @@
                         @click="dialog = true"
                         >
                         <v-icon size="18" class="mr-2">mdi-pencil-plus</v-icon>
-                            Tambah User
+                            Add Barber
                         </v-btn>
                     </v-flex>
                     <v-flex xs6 class="text-right"> 
@@ -39,8 +39,8 @@
                                 <td>{{ index + 1 }}</td> 
                                 <td>{{ item.name }}</td> 
                                 <td>{{ item.email}}</td> 
-                                <td>{{ item.password }}</td> 
-                                <td class="text-center"> 
+                                <td>{{ item.phone }}</td> 
+                                <td class="text-xs-center"> 
                                     <v-btn 
                                         icon 
                                         color="indigo" 
@@ -67,7 +67,7 @@
         <v-dialog v-model="dialog" persistent max-width="600px"> 
             <v-card> 
                 <v-card-title> 
-                    <span class="headline">User Profile</span> 
+                    <span class="headline">Barber Profile</span> 
                 </v-card-title> 
                 <v-card-text> 
                     <v-container> 
@@ -79,7 +79,7 @@
                                 <v-text-field label="Email*" v-model="form.email" required></v-text-field>
                             </v-col>
                             <v-col cols="12"> 
-                                <v-text-field label="Password*" v-model="form.password" type="password" required></v-text-field> 
+                                <v-text-field label="Phone*" v-model="form.phone" required></v-text-field> 
                             </v-col> 
                         </v-row> 
                     </v-container>
@@ -130,11 +130,11 @@ export default {
                     value: 'email' 
                 }, 
                 { 
-                    text: 'Password', 
-                    value: 'password' 
+                    text: 'Phone Number', 
+                    value: 'phone' 
                     }, 
                 { 
-                    text: 'Aksi', 
+                    text: 'Actions', 
                     value: null 
                 }, 
             ], 
@@ -146,7 +146,7 @@ export default {
             form: { 
                 name : '', 
                 email : '', 
-                password : '' 
+                phone : '' 
             }, 
             user : new FormData, 
             typeInput: 'new', 
@@ -156,7 +156,7 @@ export default {
     }, 
     methods:{ 
         getData(){ 
-            var uri = this.$apiUrl + '/user' 
+            var uri = this.$apiUrl + '/barber' 
             this.$http.get(uri).then(response =>{ 
                 this.users=response.data.message 
             }) 
@@ -164,8 +164,8 @@ export default {
         sendData(){ 
             this.user.append('name', this.form.name); 
             this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            var uri =this.$apiUrl + '/user' 
+            this.user.append('phone', this.form.phone); 
+            var uri =this.$apiUrl + '/barber' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
                 this.snackbar = true; //mengaktifkan snackbar 
@@ -187,8 +187,8 @@ export default {
         updateData(){ 
             this.user.append('name', this.form.name); 
             this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            var uri = this.$apiUrl + '/user/' + this.updatedId; 
+            this.user.append('phone', this.form.phone); 
+            var uri = this.$apiUrl + '/barber/' + this.updatedId; 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{
             this.snackbar = true; //mengaktifkan snackbar 
@@ -212,11 +212,11 @@ export default {
             this.dialog = true; 
             this.form.name = item.name; 
             this.form.email = item.email; 
-            this.form.password = '', 
+            this.form.phone = '', 
             this.updatedId = item.id 
         }, 
         deleteData(deleteId){ //menghapus data 
-            var uri = this.$apiUrl + '/user/' + deleteId; //data dihapus berdasarkan id 
+            var uri = this.$apiUrl + '/barber/' + deleteId; //data dihapus berdasarkan id 
             this.$http.delete(uri).then(response =>{ 
                 this.snackbar = true; 
                 this.text = response.data.message; 
@@ -242,7 +242,7 @@ export default {
             this.form = { 
                 name : '', 
                 email : '', 
-                password : '' 
+                phone : '' 
             } 
         } 
         }, 
