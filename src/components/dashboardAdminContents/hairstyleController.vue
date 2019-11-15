@@ -38,15 +38,14 @@
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
                                 <td>{{ item.name }}</td>
-                                <td>{{item.hair_pict}}</td>
-
                                 <td>
                                     <img
-                                    v-bind:src = "'../../../../BackendTubes-master/upload/hair_pict/'+item.hair_pict"                       
+                                    src= "item.hair_pict"                       
                                     class="grey lighten-2"
                                     width="50px"
                                     height="50px" 
-                                    />
+                                    >
+                                    <!-- </v-img> -->
                                 </td>
                                 <td class="text-xs-center"> 
                                     <v-btn 
@@ -84,7 +83,7 @@
                                 <v-text-field label="Name*" v-model="form.name" required></v-text-field> 
                             </v-col> 
                             <v-col cols="12">
-                                <v-file-input accept="image/*" label="Select an Image"></v-file-input>
+                                <v-file-input accept="image/*"  label="Select an Image*" required></v-file-input>
                             </v-col>
                         </v-row> 
                     </v-container>

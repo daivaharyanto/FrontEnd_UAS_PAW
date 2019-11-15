@@ -37,7 +37,7 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <v-btn block>Logout</v-btn>
+        <v-btn  text router to="/components/dashboardLayout.vue" block>Logout</v-btn>
       </div>
     </template>
     </v-navigation-drawer>
@@ -52,7 +52,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <VSpacer /> 
       
-      <img src="../assets/logo.svg" style="height:45px;width:45px">
+      <!-- <img src="../assets/logo.svg" style="height:45px;width:45px"> -->
       
       <v-toolbar-title 
         style="font-size: 21px;" 
@@ -77,6 +77,8 @@
           { title: 'User Controller', icon: 'mdi-human-male', link: '/' }, 
           { title: 'Barber Controller', icon: 'mdi-content-cut', link: '/dashboardAdminContents/barberController'}, 
           { title: 'Hairstyle Controller', icon: 'mdi-face', link: '/dashboardAdminContents/hairstyleController'},
+          { title: 'Service Controller', icon: 'mdi-palette-swatch', link: '/dashboardAdminContents/serviceController'},
+          { title: 'Transaction Controller', icon: 'mdi-paper-roll-outline', link: '/dashboardAdminContents/transactionController'},
           { title: 'Report', icon: 'mdi-file-pdf', link: '/dashboardAdminContents/reportController' }
         ], 
         selectedItems: []

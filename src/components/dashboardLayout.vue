@@ -1,6 +1,12 @@
 <template>
   <v-app>
     <v-app-bar app>
+      <v-toolbar-title 
+        style="font-size: 21px;" 
+        class="white--text ml-2"
+      > 
+        Barbarbershop
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text router to="/">Home</v-btn>

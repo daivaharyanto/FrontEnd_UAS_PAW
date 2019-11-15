@@ -39,6 +39,18 @@ const routes = [
                 path: '/dashboardAdminContents/hairstyleController', 
                 component: loadView('hairstyleController') 
             },
+
+            { 
+                name: 'Service', 
+                path: '/dashboardAdminContents/serviceController', 
+                component: loadView('serviceController') 
+            },
+
+            { 
+                name: 'Transaction', 
+                path: '/dashboardAdminContents/transactionController', 
+                component: loadView('transactionController') 
+            },
             
             { 
                 name: 'Report', 
