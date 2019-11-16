@@ -10,7 +10,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text router to="/Home">Home</v-btn>
-        <v-btn text router to="/ContactUs">Contact Us</v-btn>
+        <v-btn text router to="/dashboardUserContents/ContactUsUser">Contact Us</v-btn>
         <v-btn text router to="/Signup">Booking</v-btn>
         <v-menu
           v-model="menu"
@@ -39,7 +39,10 @@
 
             <v-list>
             <v-list-item>
-                <v-btn block text router to="/Signup">Edit Profile</v-btn>
+                <v-btn block text router to="/UserProfile">Edit Profile</v-btn>
+            </v-list-item>
+            <v-list-item>
+                <v-btn block text router to="/Transaction">Transaction History</v-btn>
             </v-list-item>
             <v-list-item>
                 <v-btn block text router to="/components/dashboardLayout.vue">Logout</v-btn>

@@ -28,7 +28,7 @@
                 </v-layout> 
             
                 <v-data-table 
-                    :headers="headers" 
+                :headers="headers" 
                     :items="users" 
                     :search="keyword" 
                     :loading="load" 
