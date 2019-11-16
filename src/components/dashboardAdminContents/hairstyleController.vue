@@ -40,7 +40,7 @@
                                 <td>{{ item.name }}</td>
                                 <td>
                                     <img
-                                    :src= item.hair_pict
+                                    :src= "require(item.hair_pict)"
                                     class="grey lighten-2"
                                     width="50px"
                                     height="50px" 
