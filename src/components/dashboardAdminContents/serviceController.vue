@@ -37,9 +37,9 @@
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
-                                <td>{{ item.full_name }}</td> 
-                                <td>{{ item.email}}</td> 
-                                <td>{{ item.password }}</td> 
+                                <td>{{ item.name }}</td> 
+                                <td>{{ item.description}}</td> 
+                                <td>{{ item.price }}</td> 
                                 <td class="text-xs-center"> 
                                     <v-btn 
                                         icon 
@@ -73,13 +73,13 @@
                     <v-container> 
                         <v-row> 
                             <v-col cols="12"> 
-                                <v-text-field label="Name*" v-model="form.full_name" required></v-text-field> 
+                                <v-text-field label="Name*" v-model="form.name" required></v-text-field> 
                             </v-col> 
                             <v-col cols="12"> 
-                                <v-text-field label="Email*" v-model="form.email" required></v-text-field>
+                                <v-text-field label="Description*" v-model="form.description" required></v-text-field>
                             </v-col>
                             <v-col cols="12"> 
-                                <v-text-field label="Password*" v-model="form.password" type="password" required></v-text-field> 
+                                <v-text-field label="Price*" v-model="form.price" required></v-text-field> 
                             </v-col> 
                         </v-row> 
                     </v-container>
@@ -123,15 +123,15 @@ export default {
                 }, 
                 { 
                     text: 'Name', 
-                    value: 'full_name' 
+                    value: 'name' 
                 }, 
                 { 
-                    text: 'Email', 
-                    value: 'email' 
+                    text: 'Description', 
+                    value: 'description' 
                 }, 
                 { 
-                    text: 'Password', 
-                    value: 'password' 
+                    text: 'Price', 
+                    value: 'price' 
                     }, 
                 { 
                     text: 'Actions', 
@@ -144,9 +144,9 @@ export default {
             text: '', 
             load: false,
             form: { 
-                full_name : '', 
-                email : '', 
-                password : '' 
+                name : '', 
+                description : '', 
+                price : ''
             }, 
             user : new FormData, 
             typeInput: 'new', 
@@ -156,16 +156,16 @@ export default {
     }, 
     methods:{ 
         getData(){ 
-            var uri = this.$apiUrl + '/user' 
+            var uri = this.$apiUrl + '/service' 
             this.$http.get(uri).then(response =>{ 
                 this.users=response.data.message 
             }) 
         }, 
         sendData(){ 
-            this.user.append('full_name', this.form.full_name); 
-            this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            var uri =this.$apiUrl + '/user' 
+            this.user.append('name', this.form.name); 
+            this.user.append('description', this.form.description); 
+            this.user.append('price', this.form.price); 
+            var uri =this.$apiUrl + '/service' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
                 this.snackbar = true; //mengaktifkan snackbar 
@@ -185,10 +185,10 @@ export default {
             }) 
         }, 
         updateData(){ 
-            this.user.append('full_name', this.form.full_name); 
-            this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            var uri = this.$apiUrl + '/user/' + this.updatedId; 
+            this.user.append('name', this.form.name); 
+            this.user.append('description', this.form.description); 
+            this.user.append('price', this.form.price); 
+            var uri = this.$apiUrl + '/service/' + this.updatedId; 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{
             this.snackbar = true; //mengaktifkan snackbar 
@@ -210,13 +210,13 @@ export default {
         editHandler(item){ 
             this.typeInput = 'edit'; 
             this.dialog = true; 
-            this.form.full_name = item.full_name; 
-            this.form.email = item.email; 
-            this.form.password = '', 
+            this.form.name = item.name; 
+            this.form.description = item.description; 
+            this.form.price = item.price, 
             this.updatedId = item.id 
         }, 
         deleteData(deleteId){ //menghapus data 
-            var uri = this.$apiUrl + '/user/' + deleteId; //data dihapus berdasarkan id 
+            var uri = this.$apiUrl + '/service/' + deleteId; //data dihapus berdasarkan id 
             this.$http.delete(uri).then(response =>{ 
                 this.snackbar = true; 
                 this.text = response.data.message; 
@@ -240,9 +240,9 @@ export default {
         }, 
         resetForm(){ 
             this.form = { 
-                full_name : '', 
-                email : '', 
-                password : '' 
+                name : '', 
+                description : '', 
+                price : '' 
             } 
         } 
         }, 

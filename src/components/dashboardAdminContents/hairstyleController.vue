@@ -48,14 +48,14 @@
                                     <!-- </v-img> -->
                                 </td>
                                 <td class="text-xs-center"> 
-                                    <v-btn 
+                                    <!-- <v-btn 
                                         icon 
                                         color="indigo" 
                                         light 
                                         @click="editHandler(item)" 
                                     > 
                                         <v-icon>mdi-pencil</v-icon>
-                                    </v-btn>
+                                    </v-btn> -->
                                     <v-btn
                                         icon
                                         color="error"
@@ -83,7 +83,7 @@
                                 <v-text-field label="Name*" v-model="form.name" required></v-text-field> 
                             </v-col> 
                             <v-col cols="12">
-                                <v-file-input accept="image/*"  label="Select an Image*" required></v-file-input>
+                                <input type="file" accept="image/*" label="Select an Image*" @change="onFileSelected"  required>
                             </v-col>
                         </v-row> 
                     </v-container>
@@ -92,7 +92,7 @@
                 <v-card-actions> 
                     <v-spacer></v-spacer> 
                     <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn> 
-                    <v-btn color="blue darken-1" text @click="setForm()">Save</v-btn> 
+                    <v-btn color="blue darken-1" text @click="setForm()" >Save</v-btn> 
                 </v-card-actions> 
             </v-card> 
         </v-dialog> 
@@ -145,7 +145,7 @@ export default {
             load: false,
             form: { 
                 name : '', 
-                hair_pict: '', 
+                hair_pict: '' 
             }, 
             user : new FormData, 
             typeInput: 'new', 
@@ -167,6 +167,7 @@ export default {
             var uri =this.$apiUrl + '/hairstyle' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
+                console.log(response);
                 this.snackbar = true; //mengaktifkan snackbar 
                 this.color = 'green'; //memberi warna snackbar 
                 this.text = response.data.message; //memasukkan pesan ke snackbar 
@@ -209,7 +210,7 @@ export default {
             this.typeInput = 'edit'; 
             this.dialog = true; 
             this.form.name = item.name; 
-            this.form.hair_pict = item.hair_pict;
+            this.form.hair_pict = this.onFileSelected;
             this.updatedId = item.id 
         }, 
         deleteData(deleteId){ //menghapus data 
@@ -227,6 +228,10 @@ export default {
                 this.color = 'red'; 
             }) 
         }, 
+        onFileSelected(event) {
+            console.log(event)
+            this.form.hair_pict = event.target.files[0]
+        },
         setForm(){ 
             if (this.typeInput === 'new') { 
                 this.sendData() 
@@ -238,7 +243,7 @@ export default {
         resetForm(){ 
             this.form = { 
                 name : '',  
-                hair_pict : '' 
+                hair_pict : ''
             } 
         } 
         }, 
