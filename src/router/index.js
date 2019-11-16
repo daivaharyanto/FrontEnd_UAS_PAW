@@ -116,7 +116,7 @@ const routes = [
             
             { 
                 name: 'Transaction', 
-                path: '/dashboardUserCont`ents/Transaction', 
+                path: '/dashboardUserContents/Transaction', 
                 component: loadView2('Transaction') 
             },
             

@@ -37,18 +37,22 @@
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
-                                <td>{{ item.full_name }}</td> 
-                                <td>{{ item.email}}</td> 
-                                <td>{{ item.password }}</td> 
+                                <td>{{ item.user_name }}</td> 
+                                <td>{{ item.barber_name}}</td> 
+                                <td>{{ item.hair_name }}</td> 
+                                <td>{{ item.service_name }}</td> 
+                                <td>{{ item.total }}</td>
+                                <td>{{ item.book_date }}</td>
+                                <td>{{ item.order_date }}</td>
                                 <td class="text-xs-center"> 
-                                    <v-btn 
+                                    <!-- <v-btn 
                                         icon 
                                         color="indigo" 
                                         light 
                                         @click="editHandler(item)" 
                                     > 
                                         <v-icon>mdi-pencil</v-icon>
-                                    </v-btn>
+                                    </v-btn> -->
                                     <v-btn
                                         icon
                                         color="error"
@@ -123,16 +127,32 @@ export default {
                 }, 
                 { 
                     text: 'Name', 
-                    value: 'full_name' 
+                    value: 'user_name' 
                 }, 
                 { 
                     text: 'Email', 
-                    value: 'email' 
+                    value: 'barber_name' 
                 }, 
                 { 
-                    text: 'Password', 
-                    value: 'password' 
-                    }, 
+                    text: 'Harstyle', 
+                    value: 'hair_name' 
+                }, 
+                { 
+                    text: 'Service', 
+                    value: 'service_name' 
+                }, 
+                { 
+                    text: 'Total', 
+                    value: 'total' 
+                }, 
+                { 
+                    text: 'Book Date', 
+                    value: 'book_date' 
+                }, 
+                { 
+                    text: 'Order Date', 
+                    value: 'order_date' 
+                },
                 { 
                     text: 'Actions', 
                     value: null 
@@ -156,7 +176,7 @@ export default {
     }, 
     methods:{ 
         getData(){ 
-            var uri = this.$apiUrl + '/user' 
+            var uri = this.$apiUrl + '/transaction' 
             this.$http.get(uri).then(response =>{ 
                 this.users=response.data.message 
             }) 
@@ -165,7 +185,7 @@ export default {
             this.user.append('full_name', this.form.full_name); 
             this.user.append('email', this.form.email); 
             this.user.append('password', this.form.password); 
-            var uri =this.$apiUrl + '/user' 
+            var uri =this.$apiUrl + '/transaction' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
                 this.snackbar = true; //mengaktifkan snackbar 
@@ -188,7 +208,7 @@ export default {
             this.user.append('full_name', this.form.full_name); 
             this.user.append('email', this.form.email); 
             this.user.append('password', this.form.password); 
-            var uri = this.$apiUrl + '/user/' + this.updatedId; 
+            var uri = this.$apiUrl + '/transaction/' + this.updatedId; 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{
             this.snackbar = true; //mengaktifkan snackbar 
@@ -216,7 +236,7 @@ export default {
             this.updatedId = item.id 
         }, 
         deleteData(deleteId){ //menghapus data 
-            var uri = this.$apiUrl + '/user/' + deleteId; //data dihapus berdasarkan id 
+            var uri = this.$apiUrl + '/transaction/' + deleteId; //data dihapus berdasarkan id 
             this.$http.delete(uri).then(response =>{ 
                 this.snackbar = true; 
                 this.text = response.data.message; 
