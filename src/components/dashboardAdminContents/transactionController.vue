@@ -4,7 +4,7 @@
             <v-container grid-list-md mb-0>
                 <h2 class="text-md-center">Transaction Data</h2> 
                 <v-layout row wrap style="margin:10px"> 
-                    <v-flex xs6> 
+                    <!-- <v-flex xs6> 
                         <v-btn
                         depressed 
                         dark 
@@ -16,7 +16,7 @@
                         <v-icon size="18" class="mr-2">mdi-pencil-plus</v-icon>
                             Add Transaction
                         </v-btn>
-                    </v-flex>
+                    </v-flex> -->
                     <v-flex xs6 class="text-right"> 
                         <v-text-field 
                             v-model="keyword"
@@ -134,7 +134,7 @@ export default {
                     value: 'barber_name' 
                 }, 
                 { 
-                    text: 'Harstyle', 
+                    text: 'Hairstyle', 
                     value: 'hair_name' 
                 }, 
                 { 
