@@ -1,37 +1,61 @@
 <template>
+<v-container grid-list-md mb-0>
 <v-card
     class="mx-auto"
     max-width="500">
     <v-card-text>
+        <v-form v-model="valid">
+            <v-text-field
+                v-model="firstname"
+                outlined
+                :rules="nameRules"
+                counter
+                maxlength="15"
+                label="First name"
+                required
+            ></v-text-field>
 
-  <v-form v-model="valid">
-          <v-text-field
-            v-model="firstname"
-            :rules="nameRules"
-            :counter="10"
-            label="First name"
-            required
-          ></v-text-field>
+            <v-text-field
+                v-model="lastname"
+                outlined
+                :rules="nameRules"
+                counter
+                maxlength="15"
+                label="Last name"
+                required
+            ></v-text-field>
 
-          <v-text-field
-            v-model="lastname"
-            :rules="nameRules"
-            :counter="10"
-            label="Last name"
-            required
-          ></v-text-field>
-   
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          ></v-text-field>
-    
-  </v-form>
-        </v-card-text>
-        </v-card>
+            <v-text-field
+                v-model="email"
+                outlined
+                :rules="emailRules"
+                label="E-mail"
+                required
+            ></v-text-field>
 
+            <v-textarea
+                v-model="title"
+                label="Message"
+                outlined
+                counter
+                maxlength="200"
+                full-width
+                single-line
+                required
+            ></v-textarea>
+            
+            <div class="text-center">
+                <v-btn  
+                depressed 
+                rounded 
+                large 
+                style="text-transform: none !important;" 
+                color="primary">Send</v-btn>
+            </div>
+        </v-form>
+    </v-card-text>
+</v-card>
+</v-container>
 </template>
 
 <script> 
@@ -56,7 +80,7 @@ export default {
                 { 
                     text: 'Password', 
                     value: 'password' 
-                    }, 
+                }, 
                 { 
                     text: 'Actions', 
                     value: null 

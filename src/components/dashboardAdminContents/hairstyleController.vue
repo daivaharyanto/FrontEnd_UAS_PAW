@@ -39,14 +39,14 @@
                                 <td>{{ index + 1 }}</td> 
                                 <td>{{ item.name }}</td>
                                 <td>
-                                    <img
-                                    :src= "require('../../assets/upload/hair_pict/asd.jpg')"
+                                    <v-img
+                                    :src= "require('@/assets/upload/hair_pict/'+item.hair_pict)"
+                                    contain
                                     class="grey lighten-2"
-                                    width="50px"
-                                    height="50px"
-                                    @click="editHandler(item)" 
+                                    width="80"
+                                    height="80" 
                                     >
-                                    <!-- </v-img> -->
+                                    </v-img>
                                 </td>
                                 <td class="text-xs-center"> 
                                     <!-- <v-btn 
