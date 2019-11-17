@@ -11,7 +11,7 @@
       <v-toolbar-items>
         <v-btn text router to="/Home">Home</v-btn>
         <v-btn text router to="/dashboardUserContents/ContactUsUser">Contact Us</v-btn>
-        <v-btn text router to="/Signup">Booking</v-btn>
+        <v-btn text router to="/dashboardUserContents/Booking">Booking</v-btn>
         <v-menu
           v-model="menu"
           :close-on-content-click="true"

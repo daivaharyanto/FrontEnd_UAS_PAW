@@ -40,10 +40,11 @@
                                 <td>{{ item.name }}</td>
                                 <td>
                                     <img
-                                    :src= "require(item.hair_pict)"
+                                    :src= "require('../../assets/upload/hair_pict/asd.jpg')"
                                     class="grey lighten-2"
                                     width="50px"
-                                    height="50px" 
+                                    height="50px"
+                                    @click="editHandler(item)" 
                                     >
                                     <!-- </v-img> -->
                                 </td>
