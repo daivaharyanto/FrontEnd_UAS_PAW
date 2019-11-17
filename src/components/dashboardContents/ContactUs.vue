@@ -1,8 +1,9 @@
 <template>
-<v-container grid-list-md mb-0>
+<v-container>
 <v-card
     class="mx-auto"
     max-width="500">
+    <h2 class="text-md-center">Contact Us!</h2> 
     <v-card-text>
         <v-form v-model="valid">
             <v-text-field

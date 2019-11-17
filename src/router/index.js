@@ -98,7 +98,7 @@ const routes = [
         children: [ 
             { 
                 name: 'HomeUser', 
-                path: '', 
+                path: '/dashboardUserContents/HomeUser', 
                 component: loadView2('HomeUser') 
             }, 
 
