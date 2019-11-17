@@ -3,14 +3,14 @@
     <v-col cols="12" sm="10" offset-sm="1">
       <v-card>
         <v-toolbar flat>
-          <v-toolbar-title>Albums</v-toolbar-title>
+          <v-toolbar-title>Hair Style</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
         <!-- <v-subheader>May</v-subheader> -->
         <v-container fluid>
           <v-row>
             <v-col v-for="user in users" :key="user.id" cols="3">
-              <img :src="require(user.hair_pict)" class="image" alt="lorem" width="100%" height="100%">
+              <v-img :src="require('@/assets/upload/hair_pict/'+user.hair_pict)" class="image" alt="lorem" width="100%" height="100%"></v-img>
             </v-col>
           </v-row>
         </v-container>
@@ -27,24 +27,24 @@ export default {
         return { 
             dialog: false, 
             keyword: '', 
-            headers: [ 
-                { 
-                    text: 'No', 
-                    value: 'no', 
-                }, 
-                { 
-                    text: 'Name', 
-                    value: 'name' 
-                }, 
-                {
-                    text: 'Photos',
-                    value: 'hair_pict'
-                },
-                { 
-                    text: 'Actions', 
-                    value: null 
-                }, 
-            ], 
+            // headers: [ 
+            //     { 
+            //         text: 'No', 
+            //         value: 'no', 
+            //     }, 
+            //     { 
+            //         text: 'Name', 
+            //         value: 'name' 
+            //     }, 
+            //     {
+            //         text: 'Photos',
+            //         value: 'hair_pict'
+            //     },
+            //     { 
+            //         text: 'Actions', 
+            //         value: null 
+            //     }, 
+            // ], 
             users: [], 
             snackbar: false, 
             color: null, 
@@ -67,51 +67,6 @@ export default {
             this.$http.get(uri).then(response =>{ 
                 this.users=response.data.message 
             }) 
-        }, 
-        sendData(){ 
-            this.user.append('name', this.form.name); 
-            this.user.append('hair_pict', this.form.hair_pict);
-            var uri =this.$apiUrl + '/hairstyle' 
-            this.load = true 
-            this.$http.post(uri,this.user).then(response =>{ 
-                console.log(response);
-                this.snackbar = true; //mengaktifkan snackbar 
-                this.color = 'green'; //memberi warna snackbar 
-                this.text = response.data.message; //memasukkan pesan ke snackbar 
-                
-                this.load = false; 
-                this.dialog = false 
-                this.getData(); //mengambil data user 
-                this.resetForm(); 
-            }).catch(error =>{ 
-                this.errors = error 
-                this.snackbar = true; 
-                this.text = 'Try Again'; 
-                this.color = 'red'; 
-                this.load = false; 
-            }) 
-        }, 
-        updateData(){ 
-            this.user.append('name', this.form.name); 
-            this.user.append('hair_pict', this.form.hair_pict);
-            var uri = this.$apiUrl + '/hairstyle/' + this.updatedId; 
-            this.load = true 
-            this.$http.post(uri,this.user).then(response =>{
-            this.snackbar = true; //mengaktifkan snackbar 
-            this.color = 'green'; //memberi warna snackbar 
-            this.text = response.data.message; //memasukkan pesan ke snackbar 
-            
-            this.load = false; this.dialog = false 
-            this.getData(); //mengambil data user 
-            this.resetForm(); this.typeInput = 'new'; 
-        }).catch(error =>{ 
-            this.errors = error 
-            this.snackbar = true; 
-            this.text = 'Try Again'; 
-            this.color = 'red'; 
-            this.load = false; 
-            this.typeInput = 'new'; 
-        }) 
         }, 
         editHandler(item){ 
             this.typeInput = 'edit'; 
