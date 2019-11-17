@@ -11,8 +11,8 @@
       <v-toolbar-items>
         <v-btn text router to="/">Home</v-btn>
         <v-btn text router to="/dashboardContents/ContactUs">Contact Us</v-btn>
-        <v-btn text router to="/Signup">Signup</v-btn>
-        <v-btn text router to="/components/dashboardUserLayout.vue">Login</v-btn>
+        <v-btn text router to="/dashboardContents/Signup">Signup</v-btn>
+        <v-btn text router to="/dashboardContents/Login">Login</v-btn>
         
       </v-toolbar-items>
     </v-app-bar>

@@ -130,7 +130,7 @@ export default {
                     value: 'user_name' 
                 }, 
                 { 
-                    text: 'Email', 
+                    text: 'Barber', 
                     value: 'barber_name' 
                 }, 
                 { 
