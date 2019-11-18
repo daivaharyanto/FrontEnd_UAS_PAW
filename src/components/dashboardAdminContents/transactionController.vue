@@ -1,22 +1,23 @@
 <template> 
-    <v-container> 
+
+    <v-container > 
         <v-card>
             <v-container grid-list-md mb-0>
                 <h2 class="text-md-center">Transaction Data</h2> 
                 <v-layout row wrap style="margin:10px"> 
-                    <!-- <v-flex xs6> 
+                    <v-flex xs6> 
                         <v-btn
                         depressed 
                         dark 
                         rounded 
                         style="text-transform: none !important;" 
                         color = "green accent-3" 
-                        @click="dialog = true"
+                        @click="download1()"
                         >
-                        <v-icon size="18" class="mr-2">mdi-pencil-plus</v-icon>
-                            Add Transaction
+                        <v-icon size="18" class="mr-2">mdi-file-pdf</v-icon>
+                            Make Report
                         </v-btn>
-                    </v-flex> -->
+                    </v-flex>
                     <v-flex xs6 class="text-right"> 
                         <v-text-field 
                             v-model="keyword"
@@ -26,7 +27,7 @@
                         ></v-text-field>
                     </v-flex> 
                 </v-layout> 
-            
+
                 <v-data-table 
                     :headers="headers" 
                     :items="users" 
@@ -34,6 +35,7 @@
                     :loading="load" 
                 > 
                     <template v-slot:body="{ items }"> 
+                        
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
@@ -63,8 +65,8 @@
                                     </v-btn> 
                                 </td> 
                             </tr> 
-                        </tbody> 
-                    </template> 
+                        </tbody>     
+                    </template>    
                 </v-data-table> 
             </v-container> 
         </v-card> 
@@ -115,6 +117,10 @@
 </template> 
 
 <script> 
+var jsPDF = require('jspdf');
+require('jspdf-autotable');
+
+import html2canvas from "html2canvas"
 export default { 
     data () { 
         return { 
@@ -160,6 +166,9 @@ export default {
             ], 
             users: [], 
             snackbar: false, 
+            doc: null,
+            columns: null,
+            vm: null,
             color: null, 
             text: '', 
             load: false,
@@ -175,6 +184,23 @@ export default {
         } 
     }, 
     methods:{ 
+        download1() {
+            var vm = this
+            var columns = [
+                {title: "No", dataKey: "no"},
+                {title: "Name", dataKey: "user_name"},
+                {title: "Barber", dataKey: "barber_name"},
+                {title: "Hairstyle", dataKey: "hair_name"},
+                {title: "Service", dataKey: "service_name"},
+                {title: "Total", dataKey: "total"},
+                {title: "Book Date", dataKey: "book_date"},
+                {title: "Order Date", dataKey: "order_date"},
+                
+            ];
+            const doc = new jsPDF(); 
+            doc.autoTable(columns, vm.headers);
+            doc.save('transaction.pdf')
+        },
         getData(){ 
             var uri = this.$apiUrl + '/transaction' 
             this.$http.get(uri).then(response =>{ 
@@ -269,5 +295,6 @@ export default {
         mounted(){ 
             this.getData(); 
         }, 
+        
     } 
 </script>
