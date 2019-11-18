@@ -1,5 +1,4 @@
 <template> 
-
     <v-container > 
         <v-card>
             <v-container grid-list-md mb-0>
@@ -27,7 +26,7 @@
                         ></v-text-field>
                     </v-flex> 
                 </v-layout> 
-
+                <v-container ref="content">
                 <v-data-table 
                     :headers="headers" 
                     :items="users" 
@@ -68,6 +67,7 @@
                         </tbody>     
                     </template>    
                 </v-data-table> 
+                </v-container>
             </v-container> 
         </v-card> 
         <v-dialog v-model="dialog" persistent max-width="600px"> 
@@ -117,10 +117,9 @@
 </template> 
 
 <script> 
-var jsPDF = require('jspdf');
-require('jspdf-autotable');
-
-import html2canvas from "html2canvas"
+import  jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from "html2canvas";
 export default { 
     data () { 
         return { 
@@ -167,8 +166,7 @@ export default {
             users: [], 
             snackbar: false, 
             doc: null,
-            columns: null,
-            vm: null,
+            columns: null, 
             color: null, 
             text: '', 
             load: false,
@@ -185,21 +183,20 @@ export default {
     }, 
     methods:{ 
         download1() {
-            var vm = this
             var columns = [
-                {title: "No", dataKey: "no"},
                 {title: "Name", dataKey: "user_name"},
                 {title: "Barber", dataKey: "barber_name"},
                 {title: "Hairstyle", dataKey: "hair_name"},
                 {title: "Service", dataKey: "service_name"},
-                {title: "Total", dataKey: "total"},
                 {title: "Book Date", dataKey: "book_date"},
                 {title: "Order Date", dataKey: "order_date"},
-                
             ];
-            const doc = new jsPDF(); 
-            doc.autoTable(columns, vm.headers);
-            doc.save('transaction.pdf')
+
+            var doc = new jsPDF('p', 'pt', 'letter');
+            doc.text(190, 30, 'Barbarbershop Transaction Report');
+            doc.autoTable(columns, this.users);
+            doc.save("Barbarbershop Report.pdf");
+            
         },
         getData(){ 
             var uri = this.$apiUrl + '/transaction' 
