@@ -13,6 +13,7 @@
                 label="Email"
                 id="email"
                 type="email"
+                v-model="form.email"
                 required></v-text-field>
             </v-flex>
             <v-flex>
@@ -21,6 +22,7 @@
                 label="Password"
                 id="password"
                 type="password"
+                v-model="form.password"
                 required></v-text-field>
             </v-flex>
             <div class="text-center">
@@ -31,7 +33,9 @@
                 style="text-transform: none !important;" 
                 color="primary" 
                 type="submit"
-                text router to="/components/dashboardUserLayout.vue">Login</v-btn>
+                text
+                router to="/components/dashboardUserLayout.vue"
+                @click="sendData()">Login</v-btn>
             </div>
           </v-layout>
         </form>
@@ -69,12 +73,12 @@ export default {
             }) 
         }, 
         sendData(){ 
-            this.user.append('name', this.form.name); 
             this.user.append('email', this.form.email); 
-            this.user.append('phone', this.form.phone); 
-            var uri =this.$apiUrl + '/barber' 
+            this.user.append('password', this.form.password); 
+            var uri ="http://localhost/PAWTubesUAS/BackendTubes-master/index.php/auth/login"
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
+                console.log(response);
                 this.snackbar = true; //mengaktifkan snackbar 
                 this.color = 'green'; //memberi warna snackbar 
                 this.text = response.data.message; //memasukkan pesan ke snackbar 
@@ -91,60 +95,7 @@ export default {
                 this.load = false; 
             }) 
         }, 
-        updateData(){ 
-            this.user.append('name', this.form.name); 
-            this.user.append('email', this.form.email); 
-            this.user.append('phone', this.form.phone); 
-            var uri = this.$apiUrl + '/barber/' + this.updatedId; 
-            this.load = true 
-            this.$http.post(uri,this.user).then(response =>{
-            this.snackbar = true; //mengaktifkan snackbar 
-            this.color = 'green'; //memberi warna snackbar 
-            this.text = response.data.message; //memasukkan pesan ke snackbar 
-            
-            this.load = false; this.dialog = false 
-            this.getData(); //mengambil data user 
-            this.resetForm(); this.typeInput = 'new'; 
-        }).catch(error =>{ 
-            this.errors = error 
-            this.snackbar = true; 
-            this.text = 'Try Again'; 
-            this.color = 'red'; 
-            this.load = false; 
-            this.typeInput = 'new'; 
-        }) 
-        }, 
-        editHandler(item){ 
-            this.typeInput = 'edit'; 
-            this.dialog = true; 
-            this.form.name = item.name; 
-            this.form.email = item.email; 
-            this.form.phone = '', 
-            this.updatedId = item.id 
-        }, 
-        deleteData(deleteId){ //menghapus data 
-            var uri = this.$apiUrl + '/barber/' + deleteId; //data dihapus berdasarkan id 
-            this.$http.delete(uri).then(response =>{ 
-                this.snackbar = true; 
-                this.text = response.data.message; 
-                this.color = 'green' 
-                this.deleteDialog = false; 
-                this.getData(); 
-            }).catch(error =>{ 
-                this.errors = error 
-                this.snackbar = true; 
-                this.text = 'Try Again'; 
-                this.color = 'red'; 
-            }) 
-        }, 
-        setForm(){ 
-            if (this.typeInput === 'new') { 
-                this.sendData() 
-            } else { 
-                console.log("dddd")
-                this.updateData() 
-            } 
-        }, 
+        
         resetForm(){ 
             this.form = { 
                 name : '', 
