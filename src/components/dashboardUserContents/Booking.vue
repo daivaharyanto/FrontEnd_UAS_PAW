@@ -2,10 +2,12 @@
   <v-row>
     <v-col cols="12" sm="10" offset-sm="1">
       <v-card>
+
         <v-toolbar flat>
-          <v-toolbar-title>Hair Style</v-toolbar-title>
-          <v-spacer></v-spacer>
+             <v-spacer></v-spacer>
         </v-toolbar>
+            <h2 class="text-center">Hair Style</h2> 
+
         <!-- <v-subheader>May</v-subheader> -->
         <v-container fluid>
           <v-row>

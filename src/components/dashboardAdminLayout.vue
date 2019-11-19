@@ -79,7 +79,7 @@
           { title: 'Hairstyle Controller', icon: 'mdi-face', link: '/dashboardAdminContents/hairstyleController'},
           { title: 'Service Controller', icon: 'mdi-palette-swatch', link: '/dashboardAdminContents/serviceController'},
           { title: 'Transaction Controller', icon: 'mdi-paper-roll-outline', link: '/dashboardAdminContents/transactionController'},
-          { title: 'Report', icon: 'mdi-file-pdf', link: '/dashboardAdminContents/reportController' }
+          // { title: 'Report', icon: 'mdi-file-pdf', link: '/dashboardAdminContents/reportController' }
         ], 
         selectedItems: []
       } 
