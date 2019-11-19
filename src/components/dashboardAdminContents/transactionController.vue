@@ -188,6 +188,7 @@ export default {
                 {title: "Barber", dataKey: "barber_name"},
                 {title: "Hairstyle", dataKey: "hair_name"},
                 {title: "Service", dataKey: "service_name"},
+                {title: "Total", dataKey: "total"},
                 {title: "Book Date", dataKey: "book_date"},
                 {title: "Order Date", dataKey: "order_date"},
             ];
