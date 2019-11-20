@@ -37,7 +37,7 @@
                         <tbody> 
                             <tr v-for="(item,index) in items" :key="item.id"> 
                                 <td>{{ index + 1 }}</td> 
-                                <!-- <td>{{ item.user_name }}</td>  -->
+                                <td>{{ item.user_name }}</td> 
                                 <td>{{ item.barber_name}}</td> 
                                 <td>{{ item.hair_name }}</td> 
                                 <td>{{ item.service_name }}</td> 
@@ -49,7 +49,7 @@
                                         icon 
                                         color="indigo" 
                                         light 
-                                        text router to="/dashboardUserContents/Booking"
+                                        @click="editHandler(item)"
                                     > 
                                         <v-icon>mdi-pencil</v-icon>
                                     </v-btn>
@@ -71,20 +71,37 @@
         <v-dialog v-model="dialog" persistent max-width="600px"> 
             <v-card> 
                 <v-card-title> 
-                    <span class="headline">Transaction Profile</span> 
+                    <span class="headline">Barber Profile</span> 
                 </v-card-title> 
                 <v-card-text> 
                     <v-container> 
                         <v-row> 
                             <v-col cols="12"> 
-                                <v-text-field label="Name*" v-model="form.full_name" required></v-text-field> 
+                                <v-text-field label="Name" v-model="form.name" disabled></v-text-field> 
                             </v-col> 
-                            <v-col cols="12"> 
-                                <v-text-field label="Email*" v-model="form.email" required></v-text-field>
+                            <v-col cols="12" > 
+                                <v-select
+                                    v-model="form.service"
+                                    :items="services"
+                                    item-text="name"
+                                    item-value="name"
+                                    label="Service"
+                                    single-line
+                                    return-object
+                                    @change="change(form.service) 
+                                    required"
+                                ></v-select>
                             </v-col>
                             <v-col cols="12"> 
-                                <v-text-field label="Password*" v-model="form.password" type="password" required></v-text-field> 
+                                <v-text-field label="Description" v-model="form.description" disabled></v-text-field> 
                             </v-col> 
+                            <v-col cols="12"> 
+                                <v-text-field label="Price" v-model="form.price" disabled></v-text-field> 
+                            </v-col> 
+                            <v-col cols="12"> 
+                                <v-date-picker label="Book Date*" v-model="picker" :min="nowDate" :show-current="false"></v-date-picker>
+                            </v-col>
+                            {{date1}}
                         </v-row> 
                     </v-container>
                     <small>*indicates required field</small> 
@@ -92,7 +109,7 @@
                 <v-card-actions> 
                     <v-spacer></v-spacer> 
                     <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn> 
-                    <v-btn color="blue darken-1" text @click="setForm()">Save</v-btn> 
+                    <v-btn color="blue darken-1" text @click="sendData()">Order</v-btn> 
                 </v-card-actions> 
             </v-card> 
         </v-dialog> 
@@ -120,15 +137,17 @@ export default {
         return { 
             dialog: false, 
             keyword: '', 
+            nowDate: new Date().toISOString().substr(0, 10),
+            picker: new Date().toISOString().substr(0, 10),
             headers: [ 
                 { 
                     text: 'No', 
                     value: 'no', 
                 }, 
-                // { 
-                //     text: 'Name', 
-                //     value: 'user_name' 
-                // }, 
+                { 
+                    text: 'Name', 
+                    value: 'user_name' 
+                }, 
                 { 
                     text: 'Barber', 
                     value: 'barber_name' 
@@ -175,8 +194,8 @@ export default {
         } 
     }, 
     methods:{ 
-        getData(){ 
-            var uri = this.$apiUrl + '/transaction' 
+        getData(id){ 
+            var uri = this.$apiUrl + '/transaction/' +id
             this.$http.get(uri).then(response =>{ 
                 this.users=response.data.message 
             }) 
@@ -267,7 +286,7 @@ export default {
         } 
         }, 
         mounted(){ 
-            this.getData(); 
+            this.getData(16); 
         }, 
     } 
 </script>

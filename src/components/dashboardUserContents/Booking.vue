@@ -12,7 +12,10 @@
         <v-container fluid>
           <v-row>
             <v-col v-for="user in users" :key="user.id" cols="3">
-              <v-img :src="require('@/assets/upload/hair_pict/'+user.hair_pict)" class="image" alt="lorem" width="100%" height="100%" @click="editHandler(user)"></v-img>
+                <v-card>
+                    <v-card-title class="justify-center" >{{user.name}}</v-card-title>
+                    <v-img :src="require('@/assets/upload/hair_pict/'+user.hair_pict)" class="image" alt="lorem" width="100%" height="100%" @click="editHandler(user)"></v-img>
+                </v-card>
             </v-col>
           </v-row>
         </v-container>
@@ -54,7 +57,6 @@
                         <v-col cols="12"> 
                             <v-date-picker label="Book Date*" v-model="picker" :min="nowDate" :show-current="false"></v-date-picker>
                         </v-col>
-                        {{date1}}
                     </v-row> 
                 </v-container>
                 <small>*indicates required field</small> 
