@@ -193,8 +193,9 @@ export default {
                 {title: "Order Date", dataKey: "order_date"},
             ];
 
-            var doc = new jsPDF('p', 'pt', 'letter');
-            doc.text(190, 30, 'Barbarbershop Transaction Report');
+            var doc = new jsPDF('l', 'pt', 'letter');
+            doc.setFontSize('16');
+            doc.text(280, 30, 'Barbarbershop Transaction Report');
             doc.autoTable(columns, this.users);
             doc.save("Barbarbershop Report.pdf");
             

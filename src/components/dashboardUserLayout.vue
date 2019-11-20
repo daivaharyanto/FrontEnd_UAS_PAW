@@ -45,7 +45,7 @@
                 <v-btn block text router to="/dashboardUserContents/Transaction">Transaction History</v-btn>
             </v-list-item>
             <v-list-item>
-                <v-btn block text router to="/dashboardContents/Login">Logout</v-btn>
+                <v-btn block text @click="logout()">Logout</v-btn>
             </v-list-item>
             </v-list>
 
@@ -69,5 +69,12 @@ export default {
   data: () => ({
     menu: '',
   }),
+  methods: {
+    logout()
+    {
+        localStorage.removeItem('token')
+        this.$router.push({name : "Login"})
+    }
+  } 
 };
 </script>

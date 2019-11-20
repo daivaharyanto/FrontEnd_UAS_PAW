@@ -32,10 +32,7 @@
                 large 
                 style="text-transform: none !important;" 
                 color="primary" 
-                type="submit"
-                text
-                router to="/components/dashboardUserLayout.vue"
-                @click="sendData()">Login</v-btn>
+                @click="login()">Login</v-btn>
             </div>
           </v-layout>
         </form>
@@ -49,63 +46,36 @@ export default {
     data () { 
         return { 
             dialog: false, 
-            
-            users: [], 
             snackbar: false, 
             color: null, 
             text: '', 
             load: false,
             form: { 
-                email : '', 
-                password : '' 
+                email : null, 
+                password : null 
             }, 
-            user : new FormData, 
+            user : new FormData(), 
             typeInput: 'new', 
-            errors : '', 
-            updatedId : '', 
+            errors : ''
         } 
     }, 
     methods:{ 
-        getData(){ 
-            var uri = this.$apiUrl + '/barber' 
-            this.$http.get(uri).then(response =>{ 
-                this.users=response.data.message 
-            }) 
-        }, 
-        sendData(){ 
-            this.user.append('email', this.form.email); 
-            this.user.append('password', this.form.password); 
-            var uri ="http://localhost/PAWTubesUAS/BackendTubes-master/index.php/auth/login"
-            this.load = true 
-            this.$http.post(uri,this.user).then(response =>{ 
-                console.log(response);
-                this.snackbar = true; //mengaktifkan snackbar 
-                this.color = 'green'; //memberi warna snackbar 
-                this.text = response.data.message; //memasukkan pesan ke snackbar 
-                
-                this.load = false; 
-                this.dialog = false 
-                this.getData(); //mengambil data user 
-                this.resetForm(); 
-            }).catch(error =>{ 
-                this.errors = error 
-                this.snackbar = true; 
-                this.text = 'Try Again'; 
-                this.color = 'red'; 
-                this.load = false; 
-            }) 
-        }, 
-        
-        resetForm(){ 
-            this.form = { 
-                name : '', 
-                email : '', 
-                phone : '' 
-            } 
-        } 
-        }, 
-        mounted(){ 
-            this.getData(); 
-        }, 
+      login() {
+        var url = this.$apiUrl + '/auth';
+        this.user = new FormData();
+        this.user.append("email", this.form.email);
+        this.user.append("password", this.form.password);
+        this.$http.post(url, this.user).then(response => {
+          if (response.data.token) {
+            localStorage.setItem("token", response.data.token);
+            //  headers.setItem("token", response.data.token);
+            console.log(localStorage)
+            this.$router.push({ name: "HomeUser" });
+          } else {
+            alert("gagal login");
+          }
+        });
+      }
     } 
+}
 </script>

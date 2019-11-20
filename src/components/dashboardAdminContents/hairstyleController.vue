@@ -28,7 +28,7 @@
                 </v-layout> 
             
                 <v-data-table 
-                :headers="headers" 
+                    :headers="headers" 
                     :items="users" 
                     :search="keyword" 
                     :loading="load" 
@@ -174,7 +174,7 @@ export default {
                 this.text = response.data.message; //memasukkan pesan ke snackbar 
                 
                 this.load = false; 
-                this.dialog = false 
+                this.dialog = false;
                 this.getData(); //mengambil data user 
                 this.resetForm(); 
             }).catch(error =>{ 
@@ -231,7 +231,7 @@ export default {
         }, 
         onFileSelected(event) {
             console.log(event)
-            this.form.hair_pict = event.target.files[0]
+            this.form.hair_pict = event.target.files[0];
         },
         setForm(){ 
             if (this.typeInput === 'new') { 
