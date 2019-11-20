@@ -62,20 +62,24 @@ export default {
     methods:{ 
       login() {
         var url = this.$apiUrl + '/auth';
-        this.user = new FormData();
-        this.user.append("email", this.form.email);
-        this.user.append("password", this.form.password);
-        this.$http.post(url, this.user).then(response => {
-          if (response.data.token) {
-            localStorage.setItem("token", response.data.token);
-            //  headers.setItem("token", response.data.token);
-            console.log(localStorage)
-            this.$router.push({ name: "HomeUser" });
-          } else {
-            alert("gagal login");
-          }
+          this.user = new FormData();
+          this.user.append("email", this.form.email);
+          this.user.append("password", this.form.password);
+          this.$http.post(url, this.user).then(response => {
+            if (response.data.token) {
+              localStorage.setItem("token", response.data.token);
+              //  headers.setItem("token", response.data.token);
+              console.log(localStorage);
+              if(this.form.email == "admin@gmail.com" && this.form.password == "ZAQ123wsx*") {
+                this.$router.push({ name: "User" }); 
+              } else {
+                this.$router.push({ name: "HomeUser" });
+              }
+            } else {
+              alert("Login Failed");
+            }
         });
-      }
+      },
     } 
 }
 </script>
