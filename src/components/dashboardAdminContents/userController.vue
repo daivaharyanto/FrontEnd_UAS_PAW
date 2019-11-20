@@ -156,8 +156,11 @@ export default {
     }, 
     methods:{ 
         getData(){ 
+            const auth = {
+                headers: {Authorization: localStorage.getItem('token')} 
+            }
             var uri = this.$apiUrl + '/user' 
-            this.$http.get(uri).then(response =>{ 
+            this.$http.get(uri,auth).then(response =>{ 
                 this.users=response.data.message 
             }) 
         }, 

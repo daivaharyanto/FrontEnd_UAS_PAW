@@ -37,7 +37,7 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <v-btn  text router to="/components/dashboardLayout.vue" block>Logout</v-btn>
+        <v-btn  @click="logout()" block>Logout</v-btn>
       </div>
     </template>
     </v-navigation-drawer>
@@ -87,6 +87,12 @@
     methods: {
       updateSelected (selectedItems) {
       },
+
+      logout()
+      {
+        localStorage.removeItem('token')
+        this.$router.push({name : "Login"})
+      }
     }
   }
 </script>
