@@ -19,72 +19,66 @@ function loadView3(view) {
 
 const routes = [    
     { 
-        path: '/', 
+        path: '/admin', 
         component: DashboardAdminLayout, 
         children: [ 
             { 
                 name: 'User', 
-                path: '', 
+                path: '/admin/user', 
                 component: loadView('userController') 
             }, 
 
             { 
                 name: 'Barber', 
-                path: '/dashboardAdminContents/barberController', 
+                path: '/admin/barber', 
                 component: loadView('barberController') 
             },
             
             { 
                 name: 'Hairstyle', 
-                path: '/dashboardAdminContents/hairstyleController', 
+                path: '/admin/hairstyle', 
                 component: loadView('hairstyleController') 
             },
 
             { 
                 name: 'Service', 
-                path: '/dashboardAdminContents/serviceController', 
+                path: '/admin/service', 
                 component: loadView('serviceController') 
             },
 
             { 
                 name: 'Transaction', 
-                path: '/dashboardAdminContents/transactionController', 
+                path: '/admin/transaction', 
                 component: loadView('transactionController') 
-            },
-            
-            { 
-                name: 'Report', 
-                path: '/dashboardAdminContents/reportController', 
-                component: loadView('reportController') 
-            } 
+            }
         ] 
     }, 
     
     { 
-        path: '/components/dashboardLayout.vue', 
+        path: '/', 
         component: DashboardLayout, 
         children: [ 
             { 
                 name: 'Home', 
-                path: '', 
+                path: '/', 
                 component: loadView3('Home') 
             }, 
 
             { 
                 name: 'Contact Us', 
-                path: '/dashboardContents/ContactUs', 
+                path: '/contactus', 
                 component: loadView3('ContactUs') 
             },
             
             { 
                 name: 'Signup', 
-                path: '/dashboardContents/Signup', 
+                path: '/signup', 
                 component: loadView3('Signup') 
             },
             
             { 
                 name: 'Login', 
-                path: '/dashboardContents/Login', 
+                path: '/login', 
                 component: loadView3('Login') 
             } 
         ] 
@@ -98,31 +92,31 @@ const routes = [
         children: [ 
             { 
                 name: 'HomeUser', 
-                path: '/dashboardUserContents/HomeUser', 
+                path: '/user/home', 
                 component: loadView2('HomeUser') 
             }, 
 
             { 
                 name: 'Contact Us', 
-                path: '/dashboardUserContents/ContactUsUser', 
+                path: '/user/contactus', 
                 component: loadView2('ContactUsUser') 
             },
             
             { 
                 name: 'Booking', 
-                path: '/dashboardUserContents/Booking', 
+                path: '/user/booking', 
                 component: loadView2('Booking') 
             },
             
             { 
                 name: 'Transaction', 
-                path: '/dashboardUserContents/Transaction', 
+                path: '/user/transaction', 
                 component: loadView2('Transaction') 
             },
             
             { 
                 name: 'User Profile', 
-                path: '/dashboardUserContents/UserProfile', 
+                path: '/user/profile', 
                 component: loadView2('UserProfile') 
             } 
         ] 

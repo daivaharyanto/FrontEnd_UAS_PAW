@@ -10,9 +10,9 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text router to="/">Home</v-btn>
-        <v-btn text router to="/dashboardContents/ContactUs">Contact Us</v-btn>
-        <v-btn text router to="/dashboardContents/Signup">Signup</v-btn>
-        <v-btn text router to="/dashboardContents/Login">Login</v-btn>
+        <v-btn text router to="/contactus">Contact Us</v-btn>
+        <v-btn text router to="/signup">Signup</v-btn>
+        <v-btn text router to="/login">Login</v-btn>
         
       </v-toolbar-items>
     </v-app-bar>

@@ -74,11 +74,11 @@
       return { 
         drawer: null, 
         items: [ 
-          { title: 'User Controller', icon: 'mdi-human-male', link: '/' }, 
-          { title: 'Barber Controller', icon: 'mdi-content-cut', link: '/dashboardAdminContents/barberController'}, 
-          { title: 'Hairstyle Controller', icon: 'mdi-face', link: '/dashboardAdminContents/hairstyleController'},
-          { title: 'Service Controller', icon: 'mdi-palette-swatch', link: '/dashboardAdminContents/serviceController'},
-          { title: 'Transaction Controller', icon: 'mdi-paper-roll-outline', link: '/dashboardAdminContents/transactionController'},
+          { title: 'User Controller', icon: 'mdi-human-male', link: '/admin/user' }, 
+          { title: 'Barber Controller', icon: 'mdi-content-cut', link: '/admin/barber'}, 
+          { title: 'Hairstyle Controller', icon: 'mdi-face', link: '/admin/hairstyle'},
+          { title: 'Service Controller', icon: 'mdi-palette-swatch', link: '/admin/service'},
+          { title: 'Transaction Controller', icon: 'mdi-paper-roll-outline', link: '/admin/transaction'},
           // { title: 'Report', icon: 'mdi-file-pdf', link: '/dashboardAdminContents/reportController' }
         ], 
         selectedItems: []

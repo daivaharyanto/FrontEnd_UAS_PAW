@@ -9,9 +9,9 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text router to="/dashboardUserContents/HomeUser">Home</v-btn>
-        <v-btn text router to="/dashboardUserContents/ContactUsUser">Contact Us</v-btn>
-        <v-btn text router to="/dashboardUserContents/Booking">Booking</v-btn>
+        <v-btn text router to="/user/home">Home</v-btn>
+        <v-btn text router to="/user/contactus">Contact Us</v-btn>
+        <v-btn text router to="/users/booking">Booking</v-btn>
         <v-menu
           v-model="menu"
           :close-on-content-click="true"
@@ -39,10 +39,10 @@
 
             <v-list>
             <v-list-item>
-                <v-btn block text router to="/UserProfile">Edit Profile</v-btn>
+                <v-btn block text router to="/user/profile">Edit Profile</v-btn>
             </v-list-item>
             <v-list-item>
-                <v-btn block text router to="/dashboardUserContents/Transaction">Transaction History</v-btn>
+                <v-btn block text router to="/user/transaction">Transaction History</v-btn>
             </v-list-item>
             <v-list-item>
                 <v-btn block text @click="logout()">Logout</v-btn>
