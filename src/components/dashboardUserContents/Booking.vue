@@ -93,7 +93,7 @@ export default {
                 price : '',
             }, 
             temp: {
-                user_id : '16',
+                user_id : localStorage.getItem("id"),
                 hair_id : '',
                 service_id : '',
                 barber_id : '1',
