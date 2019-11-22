@@ -23,30 +23,70 @@ const routes = [
         component: DashboardAdminLayout, 
         children: [ 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==1) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'User', 
                 path: '/admin/user', 
                 component: loadView('userController') 
             }, 
 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==1) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Barber', 
                 path: '/admin/barber', 
                 component: loadView('barberController') 
             },
             
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==1) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Hairstyle', 
                 path: '/admin/hairstyle', 
                 component: loadView('hairstyleController') 
             },
 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==1) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Service', 
                 path: '/admin/service', 
                 component: loadView('serviceController') 
             },
 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==1) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Transaction', 
                 path: '/admin/transaction', 
                 component: loadView('transactionController') 
@@ -87,34 +127,74 @@ const routes = [
     
 
     { 
-        path: '/components/dashboardUserLayout.vue', 
+        path: '/components/dashboardUserLayout.vue',
         component: DashboardUserLayout, 
         children: [ 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==2) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'HomeUser', 
                 path: '/user/home', 
                 component: loadView2('HomeUser') 
             }, 
 
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==2) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Contact Us', 
                 path: '/user/contactus', 
                 component: loadView2('ContactUsUser') 
             },
             
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==2) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Booking', 
                 path: '/user/booking', 
                 component: loadView2('Booking') 
             },
             
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==2) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'Transaction', 
                 path: '/user/transaction', 
                 component: loadView2('Transaction') 
             },
             
             { 
+                beforeEnter(to, from, next) {
+                    if (localStorage.getItem("type")==2) {
+                        next()
+                    } else {
+                        localStorage.setItem("type",0)
+                        next({ path: '/login' })
+                    }
+                }, 
                 name: 'User Profile', 
                 path: '/user/profile', 
                 component: loadView2('UserProfile') 

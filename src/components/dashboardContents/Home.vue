@@ -13,5 +13,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted(){
+    localStorage.setItem("type", 0);
+  }
+}
 </script>

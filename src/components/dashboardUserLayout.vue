@@ -72,7 +72,9 @@ export default {
   methods: {
     logout()
     {
+      localStorage.setItem("type",0)
         localStorage.removeItem('token')
+        localStorage.removeItem('id')
         this.$router.push({name : "Login"})
     }
   } 

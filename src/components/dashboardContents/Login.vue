@@ -50,6 +50,7 @@ export default {
             color: null, 
             text: '', 
             load: false,
+            users: {},
             form: { 
                 email : null, 
                 password : null 
@@ -60,7 +61,22 @@ export default {
         } 
     }, 
     methods:{ 
+      getData(){ 
+            var uri = this.$apiUrl + '/user/verify';
+            this.user = new FormData();
+            this.user.append("email", this.form.email);
+            this.user.append("password", this.form.password);
+            this.$http.post(uri, this.user).then(response =>{ 
+              if (response.data.id) {
+                  localStorage.setItem("id", response.data.id);
+                } else {
+                  alert("Login Failed");
+                }
+              }
+            ) 
+      }, 
       login() {
+        this.getData();
         var url = this.$apiUrl + '/auth';
           this.user = new FormData();
           this.user.append("email", this.form.email);
@@ -70,9 +86,11 @@ export default {
               localStorage.setItem("token", response.data.token);
               //  headers.setItem("token", response.data.token);
               console.log(localStorage);
-              if(this.form.email == "admin@gmail.com" && this.form.password == "ZAQ123wsx*") {
+              if(this.form.email == "adminbarbarbe@gmail.com" && this.form.password == "ZAQ123wsx*") {
+                localStorage.setItem("type", 1);
                 this.$router.push({ name: "User" }); 
               } else {
+                localStorage.setItem("type", 2);
                 this.$router.push({ name: "HomeUser" });
               }
             } else {
