@@ -67,7 +67,7 @@ const routes = [
             { 
                 name: 'Contact Us', 
                 path: '/contactus', 
-                component: loadView3('ContactUs') 
+                component: loadView('hairstyleController') 
             },
             
             { 
