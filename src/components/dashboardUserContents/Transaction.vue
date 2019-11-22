@@ -286,7 +286,7 @@ export default {
         } 
         }, 
         mounted(){ 
-            this.getData(16); 
+            this.getData(localStorage.getItem("id")); 
         }, 
     } 
 </script>

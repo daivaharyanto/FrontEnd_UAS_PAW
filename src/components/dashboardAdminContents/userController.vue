@@ -249,8 +249,8 @@ export default {
             } 
         } 
         }, 
-        mounted(){ 
-            this.getData(); 
-        }, 
-    } 
+    mounted(){ 
+        this.getData(); 
+    }, 
+} 
 </script>
