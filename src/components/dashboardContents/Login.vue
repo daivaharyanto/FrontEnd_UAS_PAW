@@ -87,10 +87,10 @@ export default {
               //  headers.setItem("token", response.data.token);
               console.log(localStorage);
               if(this.form.email == "adminbarbarbe@gmail.com" && this.form.password == "ZAQ123wsx*") {
-                localStorage.setItem("type", 1);
+                localStorage.setItem("type", 0);
                 this.$router.push({ name: "User" }); 
               } else {
-                localStorage.setItem("type", 2);
+                localStorage.setItem("type", 1);
                 this.$router.push({ name: "HomeUser" });
               }
             } else {

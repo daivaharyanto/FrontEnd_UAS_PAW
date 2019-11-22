@@ -91,7 +91,7 @@
       logout()
       {
         localStorage.removeItem('token')
-        localStorage.setItem("type",0)
+        localStorage.removeItem("type")
         this.$router.push({name : "Login"})
       }
     }
