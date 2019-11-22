@@ -92,6 +92,7 @@
       {
         localStorage.removeItem('token')
         localStorage.removeItem("type")
+        localStorage.removeItem("id")
         this.$router.push({name : "Login"})
       }
     }
