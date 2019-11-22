@@ -24,10 +24,11 @@ const routes = [
         children: [ 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==1) {
+                    if (localStorage.getItem("type")==0) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -38,10 +39,11 @@ const routes = [
 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==1) {
+                    if (localStorage.getItem("type")==0) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -52,10 +54,11 @@ const routes = [
             
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==1) {
+                    if (localStorage.getItem("type")==0) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -66,10 +69,11 @@ const routes = [
 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==1) {
+                    if (localStorage.getItem("type")==0) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -80,10 +84,11 @@ const routes = [
 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==1) {
+                    if (localStorage.getItem("type")==0) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -132,10 +137,11 @@ const routes = [
         children: [ 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==2) {
+                    if (localStorage.getItem("type")==1) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -146,10 +152,11 @@ const routes = [
 
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==2) {
+                    if (localStorage.getItem("type")==1) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -160,10 +167,11 @@ const routes = [
             
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==2) {
+                    if (localStorage.getItem("type")==1) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -174,10 +182,11 @@ const routes = [
             
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==2) {
+                    if (localStorage.getItem("type")==1) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
@@ -188,10 +197,11 @@ const routes = [
             
             { 
                 beforeEnter(to, from, next) {
-                    if (localStorage.getItem("type")==2) {
+                    if (localStorage.getItem("type")==1) {
                         next()
                     } else {
-                        localStorage.setItem("type",0)
+                        localStorage.removeItem('token')
+                        localStorage.removeItem("type")
                         next({ path: '/login' })
                     }
                 }, 
