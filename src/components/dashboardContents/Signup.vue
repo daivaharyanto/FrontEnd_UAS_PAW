@@ -9,8 +9,17 @@
           <v-layout column>
             <v-flex>
               <v-text-field
+                name="full_name"
+                label="Full Name"
+                id="full_name"
+                v-model="form.full_name"
+                required></v-text-field>
+            </v-flex>
+            <v-flex>
+              <v-text-field
                 name="email"
                 label="Email"
+                v-model="form.email"
                 id="email"
                 type="email"
                 required></v-text-field>
@@ -20,6 +29,7 @@
                 name="password"
                 label="Password"
                 id="password"
+                v-model="form.password"
                 type="password"
                 required></v-text-field>
             </v-flex>
@@ -38,9 +48,8 @@
                 rounded 
                 large 
                 style="text-transform: none !important;" 
-                color="primary" 
-                type="submit"
-                text router to="/dashboardContents/Login">Sign Up</v-btn>
+                color="primary"
+                @click="sendData()">Sign Up</v-btn>
             </div>
           </v-layout>
         </form>
@@ -50,5 +59,36 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () { 
+        return { 
+            dialog: false, 
+            snackbar: false, 
+            color: null, 
+            text: '', 
+            load: false,
+            users: {},
+            form: { 
+              full_name : '',
+              email : '', 
+              password : '',
+            }, 
+            user : new FormData(), 
+            typeInput: 'new', 
+            errors : ''
+        } 
+    }, 
+    methods:{ 
+      sendData(){ 
+        var uri = this.$apiUrl + '/user';
+        this.user = new FormData();
+        this.user.append("full_name", this.form.full_name);
+        this.user.append("email", this.form.email);
+        this.user.append("password", this.form.password);
+        this.$http.post(uri, this.user).then(response =>{ 
+          
+        }) 
+      }
+    }
+}
 </script>

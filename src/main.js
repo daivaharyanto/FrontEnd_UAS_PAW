@@ -5,7 +5,8 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 
 Vue.prototype.$http = Axios;
-Vue.prototype.$apiUrl = 'http://localhost/PAWTubesUAS/BackendTubes-master/index.php/';
+Vue.prototype.$apiUrl = 'http://localhost/PAWTubesUAS/BackendTubes-master/index.php';
+Vue.prototype.$apiUrl2 = 'http://localhost/PAWTubesUAS/BackendTubes-master/upload';
 
 Vue.config.productionTip = false
 

@@ -43,39 +43,37 @@
 
 <script> 
 export default { 
-    data () { 
-        return { 
-            dialog: false, 
-            snackbar: false, 
-            color: null, 
-            text: '', 
-            load: false,
-            users: {},
-            form: { 
-                email : null, 
-                password : null 
-            }, 
-            user : new FormData(), 
-            typeInput: 'new', 
-            errors : ''
-        } 
-    }, 
-    methods:{ 
-      getData(){ 
-            var uri = this.$apiUrl + '/user/verify';
-            this.user = new FormData();
-            this.user.append("email", this.form.email);
-            this.user.append("password", this.form.password);
-            this.$http.post(uri, this.user).then(response =>{ 
-              if (response.data.id) {
-                  localStorage.setItem("id", response.data.id);
-                  localStorage.setItem("email", response.data.email);
-                  localStorage.setItem("full_name", response.data.full_name);
-                } else {
-                  alert("Login Failed");
+      data () { 
+          return { 
+              dialog: false, 
+              snackbar: false, 
+              color: null, 
+              text: '', 
+              load: false,
+              users: {},
+              form: { 
+                  email : null, 
+                  password : null 
+              }, 
+              user : new FormData(), 
+              typeInput: 'new', 
+              errors : ''
+          } 
+      }, 
+      methods:{ 
+        getData(){ 
+              var uri = this.$apiUrl + '/user/verify';
+              this.user = new FormData();
+              this.user.append("email", this.form.email);
+              this.user.append("password", this.form.password);
+              this.$http.post(uri, this.user).then(response =>{ 
+                if (response.data.id) {
+                    localStorage.setItem("id", response.data.id);
+                  } else {
+                    alert("Login Failed");
+                  }
                 }
-              }
-            ) 
+              ) 
       }, 
       login() {
         this.getData();
@@ -95,8 +93,6 @@ export default {
                 localStorage.setItem("type", 1);
                 this.$router.push({ name: "HomeUser" });
               }
-            } else {
-              alert("Login Failed");
             }
         });
       },
