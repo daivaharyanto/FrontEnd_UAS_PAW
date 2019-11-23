@@ -101,7 +101,6 @@
                             <v-col cols="12"> 
                                 <v-date-picker label="Book Date*" v-model="picker" :min="nowDate" :show-current="false"></v-date-picker>
                             </v-col>
-                            {{date1}}
                         </v-row> 
                     </v-container>
                     <small>*indicates required field</small> 

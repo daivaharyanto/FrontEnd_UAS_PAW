@@ -69,6 +69,8 @@ export default {
             this.$http.post(uri, this.user).then(response =>{ 
               if (response.data.id) {
                   localStorage.setItem("id", response.data.id);
+                  localStorage.setItem("email", response.data.email);
+                  localStorage.setItem("full_name", response.data.full_name);
                 } else {
                   alert("Login Failed");
                 }

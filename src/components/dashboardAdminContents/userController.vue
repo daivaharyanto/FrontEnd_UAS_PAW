@@ -194,21 +194,21 @@ export default {
             var uri = this.$apiUrl + '/user/' + this.updatedId; 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{
-            this.snackbar = true; //mengaktifkan snackbar 
-            this.color = 'green'; //memberi warna snackbar 
-            this.text = response.data.message; //memasukkan pesan ke snackbar 
-            
-            this.load = false; this.dialog = false 
-            this.getData(); //mengambil data user 
-            this.resetForm(); this.typeInput = 'new'; 
-        }).catch(error =>{ 
-            this.errors = error 
-            this.snackbar = true; 
-            this.text = 'Try Again'; 
-            this.color = 'red'; 
-            this.load = false; 
-            this.typeInput = 'new'; 
-        }) 
+                this.snackbar = true; //mengaktifkan snackbar 
+                this.color = 'green'; //memberi warna snackbar 
+                this.text = response.data.message; //memasukkan pesan ke snackbar 
+                
+                this.load = false; this.dialog = false 
+                this.getData(); //mengambil data user 
+                this.resetForm(); this.typeInput = 'new'; 
+            }).catch(error =>{ 
+                this.errors = error 
+                this.snackbar = true; 
+                this.text = 'Try Again'; 
+                this.color = 'red'; 
+                this.load = false; 
+                this.typeInput = 'new'; 
+            }) 
         }, 
         editHandler(item){ 
             this.typeInput = 'edit'; 

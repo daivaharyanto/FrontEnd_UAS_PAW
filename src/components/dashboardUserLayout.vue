@@ -29,7 +29,7 @@
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                <v-list-item-title>Daiva Haryanto</v-list-item-title>
+                <v-list-item-title >{{name}}</v-list-item-title>
                 <!-- <v-list-item-subtitle>Founder of Vuetify.js</v-list-item-subtitle> -->
                 </v-list-item-content>
             </v-list-item>
@@ -68,6 +68,8 @@ export default {
   },
   data: () => ({
     menu: '',
+    name: localStorage.getItem("full_name"),
+    users:{}
   }),
   methods: {
     logout()
@@ -76,7 +78,19 @@ export default {
       localStorage.removeItem('token')
       localStorage.removeItem('id')
       this.$router.push({name : "Login"})
-    }
-  } 
+    },
+    getData(){
+        const auth = {
+                headers: {Authorization: localStorage.getItem('token')} 
+            }
+        var uri = this.$apiUrl + '/user/' + localStorage.getItem("id")
+        this.$http.get(uri,auth).then(response =>{ 
+            this.users=response.data.message 
+        }) 
+    },
+  }, 
+  mounted(){
+    this.getData()
+  }
 };
 </script>
