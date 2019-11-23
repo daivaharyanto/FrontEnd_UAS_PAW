@@ -9,6 +9,13 @@
           <v-layout column>
             <v-flex>
               <v-text-field
+                name="full_name"
+                label="Full Name"
+                id="full_name"
+                required></v-text-field>
+            </v-flex>
+            <v-flex>
+              <v-text-field
                 name="email"
                 label="Email"
                 id="email"
@@ -40,7 +47,7 @@
                 style="text-transform: none !important;" 
                 color="primary" 
                 type="submit"
-                text router to="/dashboardContents/Login">Sign Up</v-btn>
+                @click="sendData()">Sign Up</v-btn>
             </div>
           </v-layout>
         </form>
@@ -50,5 +57,41 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () { 
+        return { 
+            dialog: false, 
+            snackbar: false, 
+            color: null, 
+            text: '', 
+            load: false,
+            users: {},
+            form: { 
+              full_name : null,
+              email : null, 
+              password : null,
+            }, 
+            user : new FormData(), 
+            typeInput: 'new', 
+            errors : ''
+        } 
+    }, 
+    methods:{ 
+      sendData(){ 
+        var uri = this.$apiUrl + '/user  ';
+        this.user = new FormData();
+        this.user.append("full_name", this.form.full_name);
+        this.user.append("email", this.form.email);
+        this.user.append("password", this.form.password);
+        this.$http.post(uri, this.user).then(response =>{ 
+          // if (response.data.id) {
+          //     localStorage.setItem("id", response.data.id);
+          //   } else {
+          //     alert("Login Failed");
+          //   }
+          }
+        ) 
+      }
+    }
+}
 </script>

@@ -88,8 +88,8 @@
                                     label="Service"
                                     single-line
                                     return-object
-                                    @change="change(form.service) 
-                                    required"
+                                    @change="change(form.service)"
+                                    required
                                 ></v-select>
                             </v-col>
                             <v-col cols="12"> 

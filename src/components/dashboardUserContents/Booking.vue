@@ -96,7 +96,7 @@ export default {
                 user_id : localStorage.getItem("id"),
                 hair_id : '',
                 service_id : '',
-                barber_id : '1',
+                barber_id : '5',
                 // Math.floor(Math.random() * (10 - 1 + 1)) + 1
             },
             user : new FormData, 
