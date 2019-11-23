@@ -39,14 +39,14 @@
                                 <td>{{ index + 1 }}</td> 
                                 <td>{{ item.name }}</td>
                                 <td>
-                                    <v-img      
-                                    :src= "require('@/assets/upload/hair_pict/'+ item.hair_pict)"
+                                    <img      
+                                    :src= "$apiUrl2+'/hair_pict/'+item.hair_pict"
                                     contain
                                     class="grey lighten-2"
                                     width="80"
                                     height="80" 
                                     >
-                                    </v-img>
+                                    <!-- </v-img> -->
                                 </td>
                                 <td class="text-xs-center"> 
                                     <!-- <v-btn 
