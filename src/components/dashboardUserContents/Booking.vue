@@ -14,7 +14,7 @@
             <v-col v-for="user in users" :key="user.id" cols="3">
                 <v-card>
                     <v-card-title class="justify-center" >{{user.name}}</v-card-title>
-                    <v-img :src="require('@/assets/upload/hair_pict/'+user.hair_pict)" class="image" alt="lorem" width="100%" height="100%" @click="editHandler(user)"></v-img>
+                    <v-img :src="$apiUrl2+'/hair_pict/'+user.hair_pict" class="image" alt="lorem" width="100%" height="100%" @click="editHandler(user)"></v-img>
                 </v-card>
             </v-col>
           </v-row>

@@ -112,7 +112,7 @@ const routes = [
             { 
                 name: 'Contact Us', 
                 path: '/contactus', 
-                component: loadView('hairstyleController') 
+                component: loadView3('ContactUs') 
             },
             
             { 
