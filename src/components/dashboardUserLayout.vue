@@ -1,12 +1,12 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-toolbar-title 
-        style="font-size: 21px;" 
-        class="white--text ml-2"
-      > 
-        Barbarbershop
-      </v-toolbar-title>
+      <v-toolbar-side-icon> 
+       <v-img      
+        class="mr-3" src="@/assets/BarberLogo.png" height="60px" width="60px"
+        >
+       </v-img>
+      </v-toolbar-side-icon>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text router to="/user/home">Home</v-btn>
@@ -25,7 +25,12 @@
             <v-list>
             <v-list-item>
                 <v-list-item-avatar>
-                <img class="grey lighten-2" >
+                <v-img      
+                :src= "$apiUrl2+'/profile_pict/default.jpg'"
+                contain
+                class="grey lighten-2"
+                >
+                </v-img>
                 </v-list-item-avatar>
 
                 <v-list-item-content>

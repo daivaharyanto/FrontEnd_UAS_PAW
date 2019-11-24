@@ -142,6 +142,13 @@ export default {
             this.user.append('id_barber', this.temp.barber_id); 
             this.user.append('id_service', this.temp.service_id); 
             this.user.append('book_date', this.picker); 
+
+            this.user.append('price', this.form.price); 
+            this.user.append('hair_name', this.form.name);
+            this.user.append('service_name', this.form.service.name); 
+            this.user.append('username', localStorage.getItem("full_name")); 
+            this.user.append('email', localStorage.getItem("email")); 
+            
             var uri =this.$apiUrl + '/transaction' 
             this.load = true 
             this.$http.post(uri,this.user).then(response =>{ 
