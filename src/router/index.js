@@ -34,7 +34,8 @@ const routes = [
                 }, 
                 name: 'User', 
                 path: '/admin/user', 
-                component: loadView('userController') 
+                component: loadView('userController'),
+                meta: {title:'User'} 
             }, 
 
             { 
@@ -49,7 +50,8 @@ const routes = [
                 }, 
                 name: 'Barber', 
                 path: '/admin/barber', 
-                component: loadView('barberController') 
+                component: loadView('barberController'),
+                meta: {title:'Barber'} 
             },
             
             { 
@@ -64,7 +66,8 @@ const routes = [
                 }, 
                 name: 'Hairstyle', 
                 path: '/admin/hairstyle', 
-                component: loadView('hairstyleController') 
+                component: loadView('hairstyleController'),
+                meta: {title:'Hairstyle'} 
             },
 
             { 
@@ -79,7 +82,8 @@ const routes = [
                 }, 
                 name: 'Service', 
                 path: '/admin/service', 
-                component: loadView('serviceController') 
+                component: loadView('serviceController'),
+                meta: {title:'Service'}
             },
 
             { 
@@ -94,7 +98,8 @@ const routes = [
                 }, 
                 name: 'Transaction', 
                 path: '/admin/transaction', 
-                component: loadView('transactionController') 
+                component: loadView('transactionController'),
+                meta: {title:'Transaction'}
             }
         ] 
     }, 
@@ -106,25 +111,30 @@ const routes = [
             { 
                 name: 'Home', 
                 path: '/', 
-                component: loadView3('Home') 
+                component: loadView3('Home'),
+                meta: {title:'Home'}
             }, 
 
             { 
-                name: 'Contact Us', 
-                path: '/contactus', 
-                component: loadView3('ContactUs') 
+                name: 'About Us', 
+                path: '/aboutus', 
+                component: loadView3('AboutUs'), 
+                meta: {title:'About Us'}
             },
             
             { 
                 name: 'Signup', 
                 path: '/signup', 
-                component: loadView3('Signup') 
+                component: loadView3('Signup'),
+                meta: {title: 'Signup'} 
             },
             
             { 
                 name: 'Login', 
                 path: '/login', 
-                component: loadView3('Login') 
+                component: loadView3('Login'),
+                meta: {title:'Login'} 
+
             } 
         ] 
     }, 
@@ -147,7 +157,8 @@ const routes = [
                 }, 
                 name: 'HomeUser', 
                 path: '/user/home', 
-                component: loadView2('HomeUser') 
+                component: loadView2('HomeUser'),
+                meta: {title:'Home'} 
             }, 
 
             { 
@@ -160,9 +171,10 @@ const routes = [
                         next({ path: '/login' })
                     }
                 }, 
-                name: 'Contact Us', 
-                path: '/user/contactus', 
-                component: loadView2('ContactUsUser') 
+                name: 'About Us', 
+                path: '/user/aboutus', 
+                component: loadView2('AboutUsUser'),
+                meta: {title:'About Us'} 
             },
             
             { 
@@ -177,7 +189,8 @@ const routes = [
                 }, 
                 name: 'Booking', 
                 path: '/user/booking', 
-                component: loadView2('Booking') 
+                component: loadView2('Booking'),
+                meta: {title:'Booking'} 
             },
             
             { 
@@ -192,7 +205,8 @@ const routes = [
                 }, 
                 name: 'Transaction', 
                 path: '/user/transaction', 
-                component: loadView2('Transaction') 
+                component: loadView2('Transaction'),
+                meta: {title:'Transaction'} 
             },
             
             { 
@@ -207,7 +221,8 @@ const routes = [
                 }, 
                 name: 'User Profile', 
                 path: '/user/profile', 
-                component: loadView2('UserProfile') 
+                component: loadView2('UserProfile'),
+                meta: {title:'Profile'} 
             } 
         ] 
     },     

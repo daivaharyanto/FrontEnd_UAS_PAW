@@ -12,8 +12,10 @@
         <v-container fluid>
           <v-row>
             <v-col v-for="user in users" :key="user.id" cols="3">
-                <v-card>
-                    <v-card-title class="justify-center" >{{user.name}}</v-card-title>
+                <v-card max-width="mx-auto"
+                max-height="mx-auto"
+                outlined>
+                    <v-card-text class=" d-inline-block text-truncate text-no-wrap text-center font-weight-bold">{{user.name}}</v-card-text>
                     <v-img :src="$apiUrl2+'/hair_pict/'+user.hair_pict" class="image" alt="lorem" width="100%" height="100%" @click="editHandler(user)"></v-img>
                 </v-card>
             </v-col>
@@ -73,6 +75,8 @@
 </template>
 
 <script> 
+import Vue from 'vue';
+
 export default { 
     data () { 
         return { 

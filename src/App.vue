@@ -8,6 +8,15 @@
 
 <script> 
 export default { 
-  name: 'app' 
-} 
+  name: 'app' ,
+  watch: {
+    '$route':{
+      handler: (to,from) =>{
+      document.title = to.meta.title || 'Barbarbershop'
+    },
+      immediate: true
+    }
+  }
+
+};
 </script>

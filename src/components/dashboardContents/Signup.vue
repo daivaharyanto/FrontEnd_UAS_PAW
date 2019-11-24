@@ -38,6 +38,8 @@
                 name="confirmPassword"
                 label="Confirm Password"
                 id="confirmPassword"
+                :rules="confirmPasswordRules"
+                v-model="confirmPassword"
                 type="password"
                 required
                 ></v-text-field>
@@ -55,6 +57,21 @@
         </form>
       </v-flex>
     </v-layout>
+    <v-snackbar 
+        v-model="snackbar"
+        :color="color" 
+        :multi-line="true" 
+        :timeout="3000"
+    > 
+      {{ text }} 
+      <v-btn 
+          dark 
+          text 
+          @click="snackbar = false" 
+      > 
+          Close 
+      </v-btn> 
+    </v-snackbar> 
   </v-container>
 </template>
 
@@ -68,6 +85,7 @@ export default {
             text: '', 
             load: false,
             users: {},
+            confirmPassword: '',
             form: { 
               full_name : '',
               email : '', 
@@ -89,6 +107,14 @@ export default {
           
         }) 
       }
-    }
+    },
+    computed: {
+    confirmPasswordRules() {
+      return [
+        () => (this.form.password === this.confirmPassword) || 'Password Must Match',
+        v => !!v || 'Confirm Password Is Required'
+      ];
+    },
+}
 }
 </script>

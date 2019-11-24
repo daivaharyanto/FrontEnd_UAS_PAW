@@ -91,8 +91,10 @@
       logout()
       {
         localStorage.removeItem('token')
-        localStorage.removeItem("type")
-        localStorage.removeItem("id")
+        localStorage.removeItem('type')
+        localStorage.removeItem('id')
+        localStorage.removeItem('full_name')
+        localStorage.removeItem('email')
         this.$router.push({name : "Login"})
       }
     }

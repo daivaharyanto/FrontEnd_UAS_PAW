@@ -10,7 +10,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text router to="/user/home">Home</v-btn>
-        <v-btn text router to="/user/contactus">Contact Us</v-btn>
+        <v-btn text router to="/user/aboutus">About Us</v-btn>
         <v-btn text router to="/user/booking">Booking</v-btn>
         <v-menu
           v-model="menu"
@@ -29,7 +29,7 @@
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                <v-list-item-title >{{name}}</v-list-item-title>
+                <v-list-item-title class=" d-inline-block text-truncate text-no-wrap text-left font-weight-bold">Welcome, {{name}}</v-list-item-title>
                 <!-- <v-list-item-subtitle>Founder of Vuetify.js</v-list-item-subtitle> -->
                 </v-list-item-content>
             </v-list-item>
@@ -74,9 +74,11 @@ export default {
   methods: {
     logout()
     {
-      localStorage.removeItem("type")
+      localStorage.removeItem('type')
       localStorage.removeItem('token')
       localStorage.removeItem('id')
+      localStorage.removeItem('full_name')
+      localStorage.removeItem('email')
       this.$router.push({name : "Login"})
     },
     getData(){
